@@ -28,12 +28,77 @@
     ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
     : null;
 
+  // Recuerda qué correo y qué rol está a medio verificar, para la pantalla de código.
+  var pendingVerifyEmail = '';
+  var pendingVerifyRole = 'candidato';
+
+  function goToVerifyScreen(email, role) {
+    pendingVerifyEmail = email;
+    pendingVerifyRole = role;
+    var display = document.getElementById('verify-email-display');
+    if (display) display.textContent = email;
+    window.showScreen('verify');
+  }
+
+  // Cuando la persona confirma su cuenta haciendo clic en el link del correo
+  // (en esta misma pestaña o volviendo después), Supabase dispara este evento
+  // solo — así la app avanza automáticamente sin que nadie tenga que escribir
+  // ningún código.
+  if (supabaseClient) {
+    supabaseClient.auth.onAuthStateChange(function (event, session) {
+      if (event !== 'SIGNED_IN' || !session) return;
+
+      var onVerifyScreen = document.getElementById('screen-verify') &&
+        document.getElementById('screen-verify').classList.contains('active');
+      if (!onVerifyScreen) return; // no interrumpir si ya estaba navegando en otra pantalla
+
+      supabaseClient
+        .from('profiles')
+        .select('role')
+        .eq('id', session.user.id)
+        .single()
+        .then(function (result) {
+          var role = result.data ? result.data.role : pendingVerifyRole;
+          window.showToast('¡Cuenta confirmada!');
+          window.showScreen(role === 'empresa' ? 'empresa-perfil' : 'crearcv');
+        });
+    });
+  }
+
   function ensureClient() {
     if (!supabaseClient) {
       window.showToast && window.showToast('Supabase no está configurado todavía');
       return false;
     }
     return true;
+  }
+
+  // Dominios de correo personal/genérico — no se aceptan para el registro de empresa,
+  // porque necesitamos poder verificar el dominio corporativo (ver docs/SECURITY.md).
+  var CONSUMER_EMAIL_DOMAINS = [
+    'gmail.com', 'hotmail.com', 'outlook.com', 'yahoo.com', 'live.com',
+    'icloud.com', 'protonmail.com', 'aol.com', 'msn.com', 'hotmail.es', 'yahoo.es'
+  ];
+
+  function isConsumerEmailDomain(email) {
+    var domain = (email || '').split('@')[1];
+    if (!domain) return false;
+    return CONSUMER_EMAIL_DOMAINS.indexOf(domain.toLowerCase().trim()) !== -1;
+  }
+
+  /** Traduce los errores más comunes de Supabase Auth a mensajes claros en español. */
+  function friendlyAuthError(rawMessage) {
+    var msg = (rawMessage || '').toLowerCase();
+    if (msg.indexOf('already registered') !== -1 || msg.indexOf('already exists') !== -1 || msg.indexOf('user already') !== -1) {
+      return 'Ese correo ya está registrado. ¿Quieres iniciar sesión en vez de crear una cuenta nueva?';
+    }
+    if (msg.indexOf('invalid login') !== -1 || msg.indexOf('invalid_credentials') !== -1) {
+      return 'Correo o contraseña incorrectos.';
+    }
+    if (msg.indexOf('password') !== -1 && msg.indexOf('6 char') !== -1) {
+      return 'Tu contraseña debe tener al menos 6 caracteres.';
+    }
+    return rawMessage;
   }
 
   /** Registro de candidato: crea el usuario de auth + su fila en candidate_profiles (vía trigger). */
@@ -48,16 +113,32 @@
     });
 
     if (result.error) {
-      window.showToast('Error: ' + result.error.message, 3500);
+      window.showToast(friendlyAuthError(result.error.message), 3500);
       return;
     }
+
+    // Supabase no siempre marca un error explícito cuando el correo ya existe
+    // (por seguridad, para no revelar qué correos están registrados). La señal
+    // confiable es que el usuario devuelto no trae "identities" nuevas.
+    var identities = result.data && result.data.user && result.data.user.identities;
+    if (identities && identities.length === 0) {
+      window.showToast('Ese correo ya está registrado. Intenta iniciar sesión.', 3500);
+      return;
+    }
+
     window.showToast('Cuenta creada — revisa tu correo para confirmar');
-    window.showScreen('verify');
+    goToVerifyScreen(email, 'candidato');
   }
 
   /** Registro de empresa: crea el usuario de auth + su fila en company_profiles (vía trigger). */
   async function signUpCompany(email, password, companyName) {
     if (!ensureClient()) return;
+
+    if (isConsumerEmailDomain(email)) {
+      window.showToast('Usa tu correo corporativo (no gmail, hotmail, outlook, etc.) para registrar tu empresa.', 4000);
+      return;
+    }
+
     window.showLoading('Creando tu cuenta de empresa...', 600, function () {});
 
     var result = await supabaseClient.auth.signUp({
@@ -67,11 +148,18 @@
     });
 
     if (result.error) {
-      window.showToast('Error: ' + result.error.message, 3500);
+      window.showToast(friendlyAuthError(result.error.message), 3500);
       return;
     }
+
+    var identities = result.data && result.data.user && result.data.user.identities;
+    if (identities && identities.length === 0) {
+      window.showToast('Ese correo ya está registrado. Intenta iniciar sesión.', 3500);
+      return;
+    }
+
     window.showToast('Cuenta de empresa creada');
-    window.showScreen('empresa-perfil');
+    goToVerifyScreen(email, 'empresa');
   }
 
   /** Login real: autentica, consulta el rol en `profiles`, y navega al dashboard correcto. */
@@ -81,7 +169,7 @@
 
     var authResult = await supabaseClient.auth.signInWithPassword({ email: email, password: password });
     if (authResult.error) {
-      window.showToast('Error: ' + authResult.error.message, 3500);
+      window.showToast(friendlyAuthError(authResult.error.message), 3500);
       return;
     }
 
@@ -111,6 +199,22 @@
     await supabaseClient.auth.signOut();
     window.showToast('Sesión cerrada');
     window.showScreen('home');
+  }
+
+  /** Pide a Supabase que reenvíe el correo de confirmación al mismo correo. */
+  async function resendVerifyCode() {
+    if (!ensureClient()) return;
+    if (!pendingVerifyEmail) {
+      window.showToast('No encontramos a qué correo reenviar el código');
+      return;
+    }
+    window.showLoading('Reenviando código...', 600, function () {});
+    var result = await supabaseClient.auth.resend({ type: 'signup', email: pendingVerifyEmail });
+    if (result.error) {
+      window.showToast(friendlyAuthError(result.error.message), 3500);
+      return;
+    }
+    window.showToast('Correo reenviado — revisa tu bandeja de entrada');
   }
 
   /** Helper para leer los valores de un formulario de auth por sus inputs visibles. */
@@ -155,4 +259,5 @@
   window.submitCandidateRegister = submitCandidateRegister;
   window.submitCompanyRegister = submitCompanyRegister;
   window.submitLogin = submitLogin;
+  window.resendVerifyCode = resendVerifyCode;
 })();
