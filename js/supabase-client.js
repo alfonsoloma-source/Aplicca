@@ -104,6 +104,14 @@
   /** Registro de candidato: crea el usuario de auth + su fila en candidate_profiles (vía trigger). */
   async function signUpCandidate(email, password, fullName) {
     if (!ensureClient()) return;
+    window.showLoading('Verificando tu correo...', 400, function () {});
+
+    var exists = await supabaseClient.rpc('email_exists', { check_email: email });
+    if (exists.data === true) {
+      window.showToast('Ese correo ya está registrado. Intenta iniciar sesión.', 3500);
+      return;
+    }
+
     window.showLoading('Creando tu cuenta...', 600, function () {});
 
     var result = await supabaseClient.auth.signUp({
@@ -114,15 +122,6 @@
 
     if (result.error) {
       window.showToast(friendlyAuthError(result.error.message), 3500);
-      return;
-    }
-
-    // Supabase no siempre marca un error explícito cuando el correo ya existe
-    // (por seguridad, para no revelar qué correos están registrados). La señal
-    // confiable es que el usuario devuelto no trae "identities" nuevas.
-    var identities = result.data && result.data.user && result.data.user.identities;
-    if (identities && identities.length === 0) {
-      window.showToast('Ese correo ya está registrado. Intenta iniciar sesión.', 3500);
       return;
     }
 
@@ -139,6 +138,14 @@
       return;
     }
 
+    window.showLoading('Verificando tu correo...', 400, function () {});
+
+    var exists = await supabaseClient.rpc('email_exists', { check_email: email });
+    if (exists.data === true) {
+      window.showToast('Ese correo ya está registrado. Intenta iniciar sesión.', 3500);
+      return;
+    }
+
     window.showLoading('Creando tu cuenta de empresa...', 600, function () {});
 
     var result = await supabaseClient.auth.signUp({
@@ -149,12 +156,6 @@
 
     if (result.error) {
       window.showToast(friendlyAuthError(result.error.message), 3500);
-      return;
-    }
-
-    var identities = result.data && result.data.user && result.data.user.identities;
-    if (identities && identities.length === 0) {
-      window.showToast('Ese correo ya está registrado. Intenta iniciar sesión.', 3500);
       return;
     }
 
@@ -217,20 +218,14 @@
     window.showToast('Correo reenviado — revisa tu bandeja de entrada');
   }
 
-  /** Helper para leer los valores de un formulario de auth por sus inputs visibles. */
-  function readAuthForm(screenId) {
-    var screen = document.getElementById(screenId);
-    var inputs = screen.querySelectorAll('input[type="text"], input[type="password"]');
-    return inputs;
-  }
-
   // Wrappers que toman los valores directo de los inputs de cada pantalla,
   // para poder llamarlos desde onclick="..." sin cambiar el HTML existente.
   function submitCandidateRegister() {
-    var inputs = readAuthForm('screen-register');
-    // Orden de los inputs en el formulario: Nombre(s), Apellido(s), Correo, Contraseña
-    var fullName = (inputs[0] && inputs[0].value) + ' ' + (inputs[1] && inputs[1].value);
-    var email = inputs[2] && inputs[2].value;
+    var screen = document.getElementById('screen-register');
+    var nameInputs = screen.querySelectorAll('input[type="text"]');
+    // Nombre(s), Apellido(s) siguen siendo los únicos inputs de texto ahí.
+    var fullName = (nameInputs[0] && nameInputs[0].value) + ' ' + (nameInputs[1] && nameInputs[1].value);
+    var email = document.getElementById('register-email-input') ? document.getElementById('register-email-input').value : '';
     var password = document.getElementById('pw-register') ? document.getElementById('pw-register').value : '';
     signUpCandidate(email, password, fullName.trim());
   }
@@ -238,16 +233,15 @@
   function submitCompanyRegister() {
     var screen = document.getElementById('screen-empresa-registro');
     var textInputs = screen.querySelectorAll('input[type="text"]');
-    // Nombre completo, Teléfono, Correo, Nombre comercial, Razón social, RFC, Código postal...
-    var email = textInputs[2] && textInputs[2].value;
-    var companyName = textInputs[3] && textInputs[3].value;
+    // Nombre completo, Teléfono, Nombre comercial, Razón social, RFC, Código postal...
+    var companyName = textInputs[2] && textInputs[2].value;
+    var email = document.getElementById('empresa-email-input') ? document.getElementById('empresa-email-input').value : '';
     var password = document.getElementById('pw-empresa') ? document.getElementById('pw-empresa').value : '';
     signUpCompany(email, password, companyName);
   }
 
   function submitLogin() {
-    var screen = document.getElementById('screen-login');
-    var email = screen.querySelector('input[type="text"]').value;
+    var email = document.getElementById('login-email-input') ? document.getElementById('login-email-input').value : '';
     var password = document.getElementById('pw-login') ? document.getElementById('pw-login').value : '';
     realLogin(email, password);
   }

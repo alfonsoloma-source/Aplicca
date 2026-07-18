@@ -247,6 +247,71 @@
   }
 
   /* ------------------------------------------------------------ *
+   * 14. Sugerencias de dominio al escribir un correo
+   * ------------------------------------------------------------ */
+  var COMMON_EMAIL_DOMAINS = [
+    'gmail.com', 'outlook.com', 'outlook.es', 'hotmail.com', 'hotmail.es',
+    'yahoo.com', 'yahoo.es', 'icloud.com', 'live.com', 'protonmail.com'
+  ];
+
+  function initEmailAutocomplete(inputId) {
+    var input = document.getElementById(inputId);
+    if (!input || input.dataset.autocompleteReady) return;
+    input.dataset.autocompleteReady = 'true';
+
+    var wrap = document.createElement('div');
+    wrap.className = 'email-suggest-wrap';
+    input.parentNode.insertBefore(wrap, input);
+    wrap.appendChild(input);
+
+    var list = document.createElement('div');
+    list.className = 'email-suggest-list';
+    wrap.appendChild(list);
+
+    function renderMatches() {
+      var value = input.value;
+      var atIndex = value.indexOf('@');
+      if (atIndex === -1) {
+        list.classList.remove('show');
+        return;
+      }
+      var localPart = value.slice(0, atIndex);
+      var domainFragment = value.slice(atIndex + 1).toLowerCase();
+      var matches = COMMON_EMAIL_DOMAINS.filter(function (domain) {
+        return domain.indexOf(domainFragment) === 0 && domain !== domainFragment;
+      });
+      if (!localPart || matches.length === 0) {
+        list.classList.remove('show');
+        return;
+      }
+      list.innerHTML = '';
+      matches.forEach(function (domain) {
+        var item = document.createElement('div');
+        item.className = 'email-suggest-item';
+        item.textContent = localPart + '@' + domain;
+        item.addEventListener('click', function () {
+          input.value = localPart + '@' + domain;
+          list.classList.remove('show');
+          input.focus();
+        });
+        list.appendChild(item);
+      });
+      list.classList.add('show');
+    }
+
+    input.addEventListener('input', renderMatches);
+    input.addEventListener('focus', renderMatches);
+    document.addEventListener('click', function (e) {
+      if (!wrap.contains(e.target)) list.classList.remove('show');
+    });
+  }
+
+  function initAllEmailAutocompletes() {
+    ['login-email-input', 'register-email-input', 'empresa-email-input', 'forgot-email-input']
+      .forEach(initEmailAutocomplete);
+  }
+
+  /* ------------------------------------------------------------ *
    * 3. Overlay de carga reutilizable
    * ------------------------------------------------------------ */
   function showLoading(text, durationMs, onComplete) {
@@ -464,6 +529,7 @@
     initAccountMenu();
     initScrollReveal();
     initJobTitleCycle();
+    initAllEmailAutocompletes();
   }
 
   document.addEventListener('DOMContentLoaded', init);
