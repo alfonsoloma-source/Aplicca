@@ -28,6 +28,16 @@ credenciales.
    var SUPABASE_ANON_KEY = 'TU-ANON-KEY-AQUI';
    ```
    con los valores que copiaste.
+7.5. **Importante para que el código de verificación funcione**: por defecto, el
+   correo de confirmación de Supabase solo trae un link para hacer clic, no un
+   código de 6 dígitos que se pueda escribir en la app. Para activarlo:
+   - Ve a **Authentication → Email Templates → Confirm signup**
+   - En el cuerpo del correo (HTML), busca dónde dice `{{ .ConfirmationURL }}`
+   - Agrega en algún lugar visible del mensaje: `{{ .Token }}` — ese es el
+     código de 6 dígitos que el usuario va a escribir en la pantalla de
+     verificación de Aplicca. Puedes dejar también el link si quieres, no
+     estorba.
+   - Guarda la plantilla.
 8. (Opcional pero recomendado) En **Authentication → Providers**, confirma
    que "Email" esté habilitado. Por defecto Supabase exige confirmar el
    correo antes de poder iniciar sesión — puedes desactivar esa exigencia en
