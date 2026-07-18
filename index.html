@@ -3323,29 +3323,6 @@
         <span id="login-mode-badge" class="mode-badge-empresa" style="display:none"><i class="ti ti-building" aria-hidden="true"></i> Modo empresa</span>
         <h1>Inicia sesión</h1>
 
-        <button class="social-btn" onclick="showLoading('Iniciando sesión...', 1200, afterLogin)">
-          <svg width="16" height="16" viewBox="0 0 48 48">
-            <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 8 3l6-6C34.5 6.1 29.5 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.7-.4-3.5z"/>
-            <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 16 18.9 13 24 13c3.1 0 5.8 1.1 8 3l6-6C34.5 6.1 29.5 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
-            <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.5 26.7 36 24 36c-5.3 0-9.7-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/>
-            <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.2 5.6l6.2 5.2C40.9 36 44 30.8 44 24c0-1.3-.1-2.7-.4-3.5z"/>
-          </svg>
-          Continuar con Google
-        </button>
-        <button class="social-btn" onclick="showLoading('Iniciando sesión...', 1200, afterLogin)">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#0A66C2">
-            <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/>
-          </svg>
-          Continuar con LinkedIn
-        </button>
-        <button class="social-btn" onclick="showLoading('Iniciando sesión...', 1200, afterLogin)">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366">
-            <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.11c-.24.68-1.4 1.32-1.94 1.4-.5.08-1.12.11-1.8-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.14-4.9-4.33-.14-.19-1.17-1.55-1.17-2.97 0-1.41.74-2.1 1-2.39.26-.28.57-.36.76-.36.19 0 .38 0 .55.01.18.01.41-.07.64.49.24.58.81 1.99.88 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.16-.29.36-.42.48-.14.14-.28.29-.12.57.16.28.71 1.17 1.52 1.9 1.05.94 1.93 1.23 2.21 1.37.28.14.44.12.6-.07.16-.19.68-.79.86-1.06.18-.28.36-.23.6-.14.24.09 1.55.73 1.82.86.27.14.44.21.51.32.07.12.07.68-.17 1.36z"/>
-          </svg>
-          Continuar con WhatsApp
-        </button>
-
-        <div class="divider">o</div>
         <label>Correo electrónico</label>
         <input type="text" placeholder="correo@ejemplo.com">
         <label>Contraseña</label>
@@ -3384,29 +3361,6 @@
         <button class="back-btn" onclick="showScreen('home')">&larr; Volver al home</button>
         <h1>Regístrate</h1>
 
-        <button class="social-btn" onclick="showLoading('Creando tu cuenta...', 1200, () => showScreen('verify'))">
-          <svg width="16" height="16" viewBox="0 0 48 48">
-            <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 8 3l6-6C34.5 6.1 29.5 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.7-.4-3.5z"/>
-            <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 16 18.9 13 24 13c3.1 0 5.8 1.1 8 3l6-6C34.5 6.1 29.5 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
-            <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.5 26.7 36 24 36c-5.3 0-9.7-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/>
-            <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.2 5.6l6.2 5.2C40.9 36 44 30.8 44 24c0-1.3-.1-2.7-.4-3.5z"/>
-          </svg>
-          Continuar con Google
-        </button>
-        <button class="social-btn" onclick="showLoading('Creando tu cuenta...', 1200, () => showScreen('verify'))">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#0A66C2">
-            <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/>
-          </svg>
-          Continuar con LinkedIn
-        </button>
-        <button class="social-btn" onclick="showLoading('Creando tu cuenta...', 1200, () => showScreen('verify'))">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366">
-            <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.11c-.24.68-1.4 1.32-1.94 1.4-.5.08-1.12.11-1.8-.11-.42-.13-.95-.31-1.64-.6-2.88-1.24-4.76-4.14-4.9-4.33-.14-.19-1.17-1.55-1.17-2.97 0-1.41.74-2.1 1-2.39.26-.28.57-.36.76-.36.19 0 .38 0 .55.01.18.01.41-.07.64.49.24.58.81 1.99.88 2.14.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.16-.29.36-.42.48-.14.14-.28.29-.12.57.16.28.71 1.17 1.52 1.9 1.05.94 1.93 1.23 2.21 1.37.28.14.44.12.6-.07.16-.19.68-.79.86-1.06.18-.28.36-.23.6-.14.24.09 1.55.73 1.82.86.27.14.44.21.51.32.07.12.07.68-.17 1.36z"/>
-          </svg>
-          Continuar con WhatsApp
-        </button>
-
-        <div class="divider">o</div>
         <label>Nombre(s)</label>
         <input type="text" placeholder="Ana">
         <label>Apellido(s)</label>
@@ -3433,14 +3387,14 @@
       <!-- VERIFICAR CUENTA -->
       <div id="screen-verify" class="screen">
         <h1>Verifica tu cuenta</h1>
-        <p class="desc">Ingresa el código que te enviamos a <b style="color:#171717">ana.lopez19@gmail.com</b>. Si no lo encuentras, revisa la carpeta de correos no deseados, spam o promociones.</p>
+        <p class="desc">Ingresa el código que te enviamos a <b id="verify-email-display" style="color:#171717">tu correo</b>. Si no lo encuentras, revisa la carpeta de correos no deseados, spam o promociones.</p>
 
         <label>Código de 6 dígitos</label>
-        <input type="text" placeholder="000000" maxlength="6" style="letter-spacing:4px">
+        <input type="text" id="verify-code-input" placeholder="000000" maxlength="6" style="letter-spacing:4px">
 
-        <button class="submit-btn" onclick="showScreen('crearcv')">Continuar</button>
+        <button class="submit-btn" onclick="submitVerifyCode()">Continuar</button>
 
-        <p class="footer-link" style="text-align:center;margin-top:16px"><button style="text-decoration:underline">Reenviar código</button></p>
+        <p class="footer-link" style="text-align:center;margin-top:16px"><button onclick="resendVerifyCode()" style="text-decoration:underline">Reenviar código</button></p>
         <p class="footer-link">¿No es tu correo? <button onclick="showScreen('register')" style="text-decoration:underline">Corregir</button></p>
       </div>
 
