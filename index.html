@@ -3386,15 +3386,15 @@
 
       <!-- VERIFICAR CUENTA -->
       <div id="screen-verify" class="screen">
-        <h1>Verifica tu cuenta</h1>
-        <p class="desc">Ingresa el código que te enviamos a <b id="verify-email-display" style="color:#171717">tu correo</b>. Si no lo encuentras, revisa la carpeta de correos no deseados, spam o promociones.</p>
+        <h1>Revisa tu correo</h1>
+        <p class="desc">Te enviamos un link de confirmación a <b id="verify-email-display" style="color:#171717">tu correo</b>. Haz clic ahí para activar tu cuenta — esta pantalla se actualiza sola en cuanto lo confirmes, no necesitas volver aquí a escribir nada.</p>
 
-        <label>Código de 6 dígitos</label>
-        <input type="text" id="verify-code-input" placeholder="000000" maxlength="6" style="letter-spacing:4px">
+        <div class="option-card" style="cursor:default;margin:20px 0">
+          <i class="ti ti-mail-opened" aria-hidden="true"></i>
+          <div><b>Esperando confirmación...</b><span>Si no lo encuentras, revisa spam o promociones</span></div>
+        </div>
 
-        <button class="submit-btn" onclick="submitVerifyCode()">Continuar</button>
-
-        <p class="footer-link" style="text-align:center;margin-top:16px"><button onclick="resendVerifyCode()" style="text-decoration:underline">Reenviar código</button></p>
+        <p class="footer-link" style="text-align:center;margin-top:16px"><button onclick="resendVerifyCode()" style="text-decoration:underline">Reenviar correo</button></p>
         <p class="footer-link">¿No es tu correo? <button onclick="showScreen('register')" style="text-decoration:underline">Corregir</button></p>
       </div>
 
