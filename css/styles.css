@@ -917,6 +917,18 @@
   .field-hint.req { color: var(--color-danger); }
   .field-hint-select { font-size: 11.5px; color: var(--color-text-secondary); margin: 6px 0 20px; }
 
+  /* ---------- Sugerencias de dominio de correo ---------- */
+  .email-suggest-wrap { position: relative; margin-bottom: 16px; }
+  .email-suggest-wrap input { margin-bottom: 0; }
+  .email-suggest-list {
+    position: absolute; top: 100%; left: 0; right: 0; margin-top: 4px; background: var(--color-surface);
+    border: 1px solid var(--color-border-strong); border-radius: 12px; box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+    z-index: 60; max-height: 190px; overflow-y: auto; display: none;
+  }
+  .email-suggest-list.show { display: block; }
+  .email-suggest-item { padding: 9px 14px; font-size: 13px; cursor: pointer; color: var(--color-ink-alt); }
+  .email-suggest-item:hover, .email-suggest-item.active { background: var(--color-surface-alt-2); color: var(--color-ink); }
+
   /* ---------- Toast de confirmación ---------- */
   .toast {
     position: fixed; top: 24px; left: 50%; transform: translateX(-50%) translateY(-20px);
