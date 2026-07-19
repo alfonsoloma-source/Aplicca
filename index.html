@@ -649,7 +649,7 @@
         <p style="font-weight:600;font-size:12.5px;margin:0 0 10px;color:#4b4863">Tus datos de acceso</p>
         <div class="empresa-form-row">
           <div><label>Nombre completo</label><input type="text" placeholder="Roberto Salas"></div>
-          <div><label>Teléfono</label><input type="text" placeholder="81 1234 5678"></div>
+          <div><label>Teléfono</label><input type="tel" placeholder="81 1234 5678" maxlength="10" oninput="restrictToDigits(this, 10)"></div>
         </div>
         <label>Correo electrónico corporativo</label>
         <input type="email" id="empresa-email-input" placeholder="contacto@empresatechx.com">
@@ -671,7 +671,7 @@
           <div><label>RFC</label><input type="text" placeholder="ETX180523AB1"></div>
         </div>
         <div class="empresa-form-row">
-          <div><label>Código postal</label><input type="text" placeholder="64000"></div>
+          <div><label>Código postal</label><input type="text" placeholder="64000" maxlength="5" oninput="restrictToDigits(this, 5)"></div>
           <div><label>Sector</label><select><option>Selecciona...</option><option>Tecnología</option><option>Manufactura</option><option>Retail</option><option>Salud</option><option>Educación</option><option>Servicios financieros</option></select></div>
         </div>
 
@@ -2416,7 +2416,7 @@
       <div class="home-nav-right">
         <a href="#" onclick="showScreen('home');return false" class="para-empresas-link" style="font-size:13px;color:#3a3a3a;margin-right:6px">Para candidatos</a>
         <button class="btn-outline" onclick="goToLogin('empresa-perfil')">Iniciar sesión</button>
-        <button class="btn-solid" onclick="showScreen('empresa-registro')">Publicar vacante</button>
+        <button class="btn-solid" onclick="showScreen('empresa-registro')">Regístrate</button>
       </div>
     </header>
 
@@ -3427,11 +3427,11 @@
         <p class="desc">Tus datos están seguros y solo los reclutadores podrán verlos.</p>
 
         <label>¿Cuál es tu número telefónico?*</label>
-        <input type="text" placeholder="Ej: 5555667788">
+        <input type="tel" placeholder="Ej: 5555667788" maxlength="10" oninput="restrictToDigits(this, 10)">
         <p class="field-hint">Deben ser 10 dígitos</p>
 
         <label>¿Cuál es tu Código Postal?</label>
-        <input type="text" placeholder="Ej: 76000">
+        <input type="text" placeholder="Ej: 76000" maxlength="5" oninput="restrictToDigits(this, 5)">
         <p class="field-hint">Deben ser 5 dígitos</p>
 
         <label>¿Cuál es tu ubicación?*</label>
