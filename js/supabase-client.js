@@ -46,6 +46,12 @@
   // ningún código.
   if (supabaseClient) {
     supabaseClient.auth.onAuthStateChange(function (event, session) {
+      if (event === 'PASSWORD_RECOVERY') {
+        // Volvió del link de "recuperar contraseña" — mándalo a poner la nueva.
+        window.showScreen('nueva-contrasena');
+        return;
+      }
+
       if (event !== 'SIGNED_IN' || !session) return;
 
       var onVerifyScreen = document.getElementById('screen-verify') &&
@@ -63,6 +69,97 @@
           window.showScreen(role === 'empresa' ? 'empresa-perfil' : 'crearcv');
         });
     });
+  }
+
+  /** Pide a Supabase que mande el correo de recuperación de contraseña. */
+  async function submitForgotPassword() {
+    if (!ensureClient()) return;
+    var input = document.getElementById('forgot-email-input');
+    var email = input ? input.value.trim() : '';
+
+    if (!email) {
+      window.showToast('Escribe tu correo primero');
+      return;
+    }
+
+    window.showLoading('Enviando instrucciones...', 700, function () {});
+
+    var result = await supabaseClient.auth.resetPasswordForEmail(email);
+
+    if (result.error) {
+      window.showToast(friendlyAuthError(result.error.message), 3500);
+      return;
+    }
+
+    var display = document.getElementById('forgot-email-display');
+    if (display) display.textContent = email;
+    window.showScreen('sent');
+  }
+
+  /** Guarda la contraseña nueva una vez que Supabase ya confirmó la sesión de recuperación. */
+  async function submitNewPassword() {
+    if (!ensureClient()) return;
+    var pw1 = document.getElementById('pw-nueva') ? document.getElementById('pw-nueva').value : '';
+    var pw2 = document.getElementById('pw-nueva-confirm') ? document.getElementById('pw-nueva-confirm').value : '';
+
+    if (pw1.length < 6) {
+      window.showToast('Tu contraseña debe tener al menos 6 caracteres');
+      return;
+    }
+    if (pw1 !== pw2) {
+      window.showToast('Las dos contraseñas no son iguales');
+      return;
+    }
+
+    window.showLoading('Guardando tu contraseña nueva...', 800, function () {});
+
+    var result = await supabaseClient.auth.updateUser({ password: pw1 });
+
+    if (result.error) {
+      window.showToast(friendlyAuthError(result.error.message), 3500);
+      return;
+    }
+
+    window.showToast('Contraseña actualizada — ya puedes iniciar sesión con ella');
+    await supabaseClient.auth.signOut();
+    window.showScreen('home');
+  }
+
+  var emailExistsModalTarget = 'candidato-dashboard';
+
+  /** Muestra la alerta de "ese correo ya tiene cuenta" con las dos opciones. */
+  function showEmailExistsModal(email, redirectTarget) {
+    emailExistsModalTarget = redirectTarget || 'candidato-dashboard';
+    var text = document.getElementById('email-exists-modal-text');
+    if (text) {
+      text.textContent = 'Ya existe una cuenta registrada con ' + email + '. ¿Quieres iniciar sesión, o prefieres recuperar tu contraseña?';
+    }
+    var modal = document.getElementById('email-exists-modal');
+    if (modal) modal.classList.add('show');
+
+    // Guardamos el correo para rellenarlo solo en la siguiente pantalla.
+    modal.dataset.email = email;
+  }
+
+  function closeEmailExistsModal() {
+    var modal = document.getElementById('email-exists-modal');
+    if (modal) modal.classList.remove('show');
+  }
+
+  function handleEmailExistsAction(action) {
+    var modal = document.getElementById('email-exists-modal');
+    var email = modal ? modal.dataset.email : '';
+    closeEmailExistsModal();
+
+    if (action === 'login') {
+      window.goToLogin(emailExistsModalTarget);
+      var loginInput = document.getElementById('login-email-input');
+      if (loginInput) loginInput.value = email;
+    } else {
+      window.showScreen('forgot');
+      var forgotInput = document.getElementById('forgot-email-input');
+      if (forgotInput) forgotInput.value = email;
+    }
   }
 
   function ensureClient() {
@@ -108,7 +205,7 @@
 
     var exists = await supabaseClient.rpc('email_exists', { check_email: email });
     if (exists.data === true) {
-      window.showToast('Ese correo ya está registrado. Intenta iniciar sesión.', 3500);
+      showEmailExistsModal(email, 'candidato-dashboard');
       return;
     }
 
@@ -142,7 +239,7 @@
 
     var exists = await supabaseClient.rpc('email_exists', { check_email: email });
     if (exists.data === true) {
-      window.showToast('Ese correo ya está registrado. Intenta iniciar sesión.', 3500);
+      showEmailExistsModal(email, 'empresa-perfil');
       return;
     }
 
@@ -254,4 +351,8 @@
   window.submitCompanyRegister = submitCompanyRegister;
   window.submitLogin = submitLogin;
   window.resendVerifyCode = resendVerifyCode;
+  window.submitForgotPassword = submitForgotPassword;
+  window.submitNewPassword = submitNewPassword;
+  window.handleEmailExistsAction = handleEmailExistsAction;
+  window.closeEmailExistsModal = closeEmailExistsModal;
 })();
