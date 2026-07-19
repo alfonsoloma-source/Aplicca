@@ -3345,15 +3345,36 @@
         <p class="desc">Ingresa el correo electrónico asociado a tu cuenta y te enviaremos las instrucciones para restablecer tu contraseña.</p>
         <label>Correo electrónico</label>
         <input type="email" id="forgot-email-input" placeholder="correo@ejemplo.com">
-        <button class="submit-btn" onclick="showScreen('sent')">Enviar</button>
+        <button class="submit-btn" onclick="submitForgotPassword()">Enviar</button>
         <p class="footer-link">Volver a <button onclick="goToLogin('candidato-dashboard')" style="text-decoration:underline">Iniciar sesión</button></p>
       </div>
 
       <!-- CONFIRMACIÓN -->
       <div id="screen-sent" class="screen">
         <h1>Revisa tu correo</h1>
-        <p class="desc">Te enviamos un enlace para restablecer tu contraseña. Revisa tu bandeja de entrada (y spam, por si acaso).</p>
+        <p class="desc">Te enviamos un enlace a <b id="forgot-email-display" style="color:#171717">tu correo</b> para restablecer tu contraseña. Revisa tu bandeja de entrada (y spam, por si acaso).</p>
         <button class="submit-btn" onclick="goToLogin('candidato-dashboard')">Volver a iniciar sesión</button>
+      </div>
+
+      <!-- NUEVA CONTRASEÑA (llega aquí sola al hacer clic en el link del correo) -->
+      <div id="screen-nueva-contrasena" class="screen">
+        <h1>Crea tu contraseña nueva</h1>
+        <p class="desc">Ya confirmamos que eres tú — escribe la contraseña que quieres usar de ahora en adelante.</p>
+        <label>Contraseña nueva</label>
+        <div class="password-field">
+          <input type="password" id="pw-nueva" placeholder="••••••••">
+          <button type="button" class="password-toggle" onclick="togglePassword('pw-nueva', this)">
+            <svg class="eye-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </div>
+        <label>Confirma tu contraseña nueva</label>
+        <div class="password-field">
+          <input type="password" id="pw-nueva-confirm" placeholder="••••••••">
+          <button type="button" class="password-toggle" onclick="togglePassword('pw-nueva-confirm', this)">
+            <svg class="eye-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </div>
+        <button class="submit-btn" onclick="submitNewPassword()">Guardar contraseña nueva</button>
       </div>
 
       <!-- REGISTRO CANDIDATO -->
@@ -3552,6 +3573,19 @@
         <p style="text-align:center"><button onclick="showScreen('manual-personal')" style="background:none;border:none;font-size:13px;font-weight:600;color:#3a3a3a;cursor:pointer;font-family:inherit">Crear de forma manual</button></p>
       </div>
 
+    </div>
+  </div>
+
+  <div class="alert-modal-backdrop" id="email-exists-modal" onclick="if (event.target === this) closeEmailExistsModal()">
+    <div class="alert-modal-card">
+      <div class="alert-modal-icon"><i class="ti ti-mail-exclamation" aria-hidden="true"></i></div>
+      <h3>Ese correo ya tiene cuenta</h3>
+      <p id="email-exists-modal-text">Ya existe una cuenta registrada con ese correo. ¿Quieres iniciar sesión, o prefieres recuperar tu contraseña?</p>
+      <div class="alert-modal-actions">
+        <button class="btn-solid" onclick="handleEmailExistsAction('login')">Iniciar sesión</button>
+        <button class="btn-outline" onclick="handleEmailExistsAction('forgot')">Recuperar contraseña</button>
+        <button class="footer-link" style="background:none;border:none;text-decoration:underline;cursor:pointer;margin-top:4px" onclick="closeEmailExistsModal()">Cancelar</button>
+      </div>
     </div>
   </div>
 
