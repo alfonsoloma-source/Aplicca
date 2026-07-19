@@ -311,6 +311,13 @@
       .forEach(initEmailAutocomplete);
   }
 
+  /** Deja escribir solo dígitos en un campo (teléfono, código postal, etc.), quitando cualquier otro carácter al vuelo. */
+  function restrictToDigits(inputEl, maxLength) {
+    var digitsOnly = inputEl.value.replace(/\D/g, '');
+    if (maxLength) digitsOnly = digitsOnly.slice(0, maxLength);
+    inputEl.value = digitsOnly;
+  }
+
   /* ------------------------------------------------------------ *
    * 3. Overlay de carga reutilizable
    * ------------------------------------------------------------ */
@@ -560,4 +567,5 @@
   window.setUserFilter = setUserFilter;
   window.filterUsers = filterUsers;
   window.toggleMoreSections = toggleMoreSections;
+  window.restrictToDigits = restrictToDigits;
 })();
