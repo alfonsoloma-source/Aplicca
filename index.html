@@ -20,7 +20,7 @@
           <span class="brand-name">Aplicca</span>
         </div>
         <nav class="home-nav-links">
-          <a href="#" onclick="showScreen('vacantes');return false">Buscar empleo</a>
+          <a href="#" onclick="showScreen('vacantes'); loadJobsSearch();return false">Buscar empleo</a>
           <a href="#">Empresas destacadas</a>
         </nav>
       </div>
@@ -52,7 +52,7 @@
               <input type="text" placeholder="Selecciona ciudad">
             </div>
           </div>
-          <button class="hero-search-submit" onclick="showScreen('vacantes')" aria-label="Buscar vacantes"><i class="ti ti-search" aria-hidden="true"></i></button>
+          <button class="hero-search-submit" onclick="showScreen('vacantes'); loadJobsSearch()" aria-label="Buscar vacantes"><i class="ti ti-search" aria-hidden="true"></i></button>
         </div>
       </div>
 
@@ -157,7 +157,7 @@
         <div class="cat-pill-card"><div class="cat-icon"><i class="ti ti-code" aria-hidden="true"></i></div><b>Tecnología</b></div>
         <div class="cat-pill-card"><div class="cat-icon"><i class="ti ti-calculator" aria-hidden="true"></i></div><b>Contabilidad</b></div>
         <div class="cat-pill-card"><div class="cat-icon"><i class="ti ti-chart-pie" aria-hidden="true"></i></div><b>Marketing</b></div>
-        <div class="cat-pill-card active" onclick="showScreen('vacantes')"><div class="cat-icon"><i class="ti ti-briefcase" aria-hidden="true"></i></div><b>Administrativo</b><span class="view-jobs">Ver vacantes →</span></div>
+        <div class="cat-pill-card active" onclick="showScreen('vacantes'); loadJobsSearch()"><div class="cat-icon"><i class="ti ti-briefcase" aria-hidden="true"></i></div><b>Administrativo</b><span class="view-jobs">Ver vacantes →</span></div>
         <div class="cat-pill-card"><div class="cat-icon"><i class="ti ti-coin" aria-hidden="true"></i></div><b>Finanzas</b></div>
       </div>
     </section>
@@ -169,37 +169,37 @@
         <div class="carousel-arrows"><button aria-label="Anterior"><i class="ti ti-chevron-left" aria-hidden="true"></i></button><button aria-label="Siguiente"><i class="ti ti-chevron-right" aria-hidden="true"></i></button></div>
       </div>
       <div class="job-mini-grid">
-        <div class="job-mini-card" onclick="showScreen('vacantes')">
+        <div class="job-mini-card" onclick="showScreen('vacantes'); loadJobsSearch()">
           <div class="job-mini-top"><div class="job-mini-logo">TX</div><span class="job-mini-salary">$18K-24K</span></div>
           <b class="title">Diseñador de Producto Sr.</b>
           <div class="job-mini-meta"><span>Remoto</span><span>·</span><span>CDMX</span></div>
           <span class="job-mini-time">Hace 1 día</span>
         </div>
-        <div class="job-mini-card dark" onclick="showScreen('vacantes')">
+        <div class="job-mini-card dark" onclick="showScreen('vacantes'); loadJobsSearch()">
           <div class="job-mini-top"><div class="job-mini-logo">NV</div><span class="job-mini-salary">$20K/mes</span></div>
           <b class="title">Marketing Digital</b>
           <div class="job-mini-meta"><span>Presencial</span><span>·</span><span>Monterrey</span></div>
           <span class="job-mini-time">Hace 5 días</span>
         </div>
-        <div class="job-mini-card" onclick="showScreen('vacantes')">
+        <div class="job-mini-card" onclick="showScreen('vacantes'); loadJobsSearch()">
           <div class="job-mini-top"><div class="job-mini-logo">GS</div><span class="job-mini-salary">$35K/mes</span></div>
           <b class="title">Analista de Ciberseguridad</b>
           <div class="job-mini-meta"><span>Híbrido</span><span>·</span><span>Guadalajara</span></div>
           <span class="job-mini-time">Hace 7 días</span>
         </div>
-        <div class="job-mini-card" onclick="showScreen('vacantes')">
+        <div class="job-mini-card" onclick="showScreen('vacantes'); loadJobsSearch()">
           <div class="job-mini-top"><div class="job-mini-logo">FR</div><span class="job-mini-salary">$40K/mes</span></div>
           <b class="title">Ingeniero de Software Sr.</b>
           <div class="job-mini-meta"><span>Remoto</span><span>·</span><span>CDMX</span></div>
           <span class="job-mini-time">Hace 2 semanas</span>
         </div>
-        <div class="job-mini-card" onclick="showScreen('vacantes')">
+        <div class="job-mini-card" onclick="showScreen('vacantes'); loadJobsSearch()">
           <div class="job-mini-top"><div class="job-mini-logo">BA</div><span class="job-mini-salary">$18K/mes</span></div>
           <b class="title">Desarrollador Python</b>
           <div class="job-mini-meta"><span>Remoto</span><span>·</span><span>Monterrey</span></div>
           <span class="job-mini-time">Hace 4 semanas</span>
         </div>
-        <div class="job-mini-card cta" onclick="showScreen('vacantes')">
+        <div class="job-mini-card cta" onclick="showScreen('vacantes'); loadJobsSearch()">
           <b>1.4K+</b>
           <span>Explorar todas las vacantes →</span>
         </div>
@@ -299,7 +299,7 @@
       <p>Crea tu perfil y empieza a descubrir vacantes que van con tus habilidades y metas profesionales.</p>
       <div class="final-cta-btns">
         <button class="btn-solid" onclick="showScreen('register')">Crear perfil</button>
-        <button class="btn-ghost-light" onclick="showScreen('vacantes')">Ver vacantes</button>
+        <button class="btn-ghost-light" onclick="showScreen('vacantes'); loadJobsSearch()">Ver vacantes</button>
       </div>
     </section>
 
@@ -320,7 +320,7 @@
         <div class="dark-footer-cols">
           <div>
             <h4>Candidatos</h4>
-            <a href="#" onclick="showScreen('vacantes');return false">Buscar vacantes</a>
+            <a href="#" onclick="showScreen('vacantes'); loadJobsSearch();return false">Buscar vacantes</a>
             <a href="#">Preguntas frecuentes</a>
           </div>
           <div>
@@ -509,54 +509,21 @@
 
     <div class="jobs-layout">
       <div class="jobs-list-col">
-        <div class="jobs-meta-row"><span>3 resultados</span><span>Ordenar por: Relevancia</span></div>
+        <div class="jobs-meta-row"><span id="jobs-results-count">Cargando...</span><span>Ordenar por: Relevancia</span></div>
 
-        <div class="job-card selected">
-          <span class="badge-rec">Recomendado</span>
-          <p class="posted">Hace 1 semana</p>
-          <h4>Coordinador de Talento, Eventos y Cultura Organizacional</h4>
-          <p class="salary">$15,000 - $20,000 Mensual</p>
-          <p class="empresa">Empresa confidencial <i class="ti ti-shield-check" aria-hidden="true"></i></p>
-          <p class="loc">General Escobedo, Nuevo León</p>
-          <span class="role-tag" style="margin-top:8px;display:inline-flex;align-items:center;gap:4px"><i class="ti ti-brand-whatsapp" aria-hidden="true"></i> Postúlate rápido por WhatsApp</span>
-        </div>
-
-        <div class="job-card">
-          <p class="posted">Hace 3 días</p>
-          <h4>Coordinadora de eventos</h4>
-          <p class="salary">$14,000 - $15,000 Mensual</p>
-          <p class="empresa">QUILINOS</p>
-          <p class="loc">Nuevo León</p>
-          <span class="role-tag" style="margin-top:8px;display:inline-block;background:var(--color-success-bg);color:var(--color-success-text)">Nuevo</span>
-        </div>
-
-        <div class="job-card">
-          <span class="badge-rec">Recomendado</span>
-          <p class="posted">Hace 1 semana</p>
-          <h4>Coordinador de Talento, Eventos y Cultura Org...</h4>
-          <p class="salary">$15,000 - $20,000 Mensual</p>
-          <p class="empresa">Empresa confidencial <i class="ti ti-shield-check" aria-hidden="true"></i></p>
-          <p class="loc">General Escobedo, Nuevo León</p>
-          <span class="role-tag" style="margin-top:8px;display:inline-flex;align-items:center;gap:4px"><i class="ti ti-brand-whatsapp" aria-hidden="true"></i> Postúlate rápido por WhatsApp</span>
-        </div>
-
-        <div class="job-card">
-          <p class="posted">Hace 2 meses</p>
-          <h4>Coordinadora de eventos</h4>
-          <p class="salary">$20,000 - $21,000 Mensual</p>
-          <p class="empresa">Hotel Four Points Monterrey</p>
-          <p class="loc">Monterrey, Nuevo León</p>
+        <div id="jobs-search-list">
+          <p class="field-hint-select">Buscando vacantes activas...</p>
         </div>
       </div>
 
       <div class="job-detail-col">
         <span class="badge-rec">Recomendado</span>
-        <h2>Coordinador de Talento, Eventos y Cultura Organizacional</h2>
-        <p class="salary-big">$15,000 - $20,000 Mensual</p>
-        <p class="empresa-line">Empresa confidencial en General Escobedo, Nuevo León</p>
+        <h2 id="detail-job-title">Selecciona una vacante</h2>
+        <p class="salary-big" id="detail-job-salary">—</p>
+        <p class="empresa-line" id="detail-job-empresa">—</p>
         <p class="verified" style="cursor:pointer" onclick="showScreen('empresa-publica')"><i class="ti ti-shield-check" aria-hidden="true"></i> Empresa verificada · Ver perfil de la empresa <i class="ti ti-chevron-right" aria-hidden="true"></i></p>
         <br>
-        <button class="btn-postular" onclick="showLoading('Enviando tu postulación...', 1600, () => showScreen('postulado'))">Postularme</button>
+        <button class="btn-postular" onclick="applyToJob()">Postularme</button>
 
         <p class="compat-title">Conoce tu compatibilidad con la vacante</p>
         <div class="compat-grid">
@@ -620,7 +587,7 @@
         <div class="welcome-illustration"><i class="ti ti-circle-check" aria-hidden="true"></i></div>
         <h1>¡Postulación enviada!</h1>
         <p class="desc">Tu aplicación a "Coordinador de Talento, Eventos y Cultura Organizacional" fue enviada. Te avisaremos por correo y WhatsApp cuando haya novedades.</p>
-        <button class="welcome-btn" onclick="showScreen('vacantes')">Seguir buscando vacantes</button>
+        <button class="welcome-btn" onclick="showScreen('vacantes'); loadJobsSearch()">Seguir buscando vacantes</button>
       </div>
     </div>
   </div>
@@ -632,7 +599,7 @@
         <div class="welcome-illustration"><i class="ti ti-confetti" aria-hidden="true"></i></div>
         <h1>Te damos la bienvenida</h1>
         <p class="desc">Nos emociona ayudarte a encontrar tu próxima oportunidad laboral y estamos comprometidos en apoyarte. ¡Te deseamos éxito en tu búsqueda!</p>
-        <button class="welcome-btn" onclick="showScreen('vacantes')">Ver vacantes</button>
+        <button class="welcome-btn" onclick="showScreen('vacantes'); loadJobsSearch()">Ver vacantes</button>
       </div>
     </div>
   </div>
@@ -700,7 +667,7 @@
           <span onclick="showScreen('notificaciones-empresa')"><i class="ti ti-bell" aria-hidden="true"></i> Alertas</span>
           <span onclick="showScreen('empresa-entrevistas')"><i class="ti ti-calendar-event" aria-hidden="true"></i> Entrevistas</span>
           <span onclick="showScreen('empresa-publicar')"><i class="ti ti-plus" aria-hidden="true"></i> Publicar</span>
-          <span onclick="showScreen('empresa-vacantes')"><i class="ti ti-briefcase" aria-hidden="true"></i> Mis vacantes</span>
+          <span onclick="showScreen('empresa-vacantes'); loadMyJobs()"><i class="ti ti-briefcase" aria-hidden="true"></i> Mis vacantes</span>
           <span onclick="showScreen('mensajes-empresa')"><i class="ti ti-message-circle" aria-hidden="true"></i> Mensajes</span>
           <span onclick="showScreen('empresa-mas')"><i class="ti ti-dots" aria-hidden="true"></i> Más</span>
         </div>
@@ -764,7 +731,7 @@
         <i class="ti ti-plus" aria-hidden="true"></i>
         <div><b>Publicar una vacante</b><span>Crea una nueva publicación y comparte su link de WhatsApp</span></div>
       </div>
-      <div class="option-card" onclick="showScreen('empresa-vacantes')">
+      <div class="option-card" onclick="showScreen('empresa-vacantes'); loadMyJobs()">
         <i class="ti ti-briefcase" aria-hidden="true"></i>
         <div><b>Ver mis vacantes</b><span>Administra tus publicaciones activas y revisa candidatos</span></div>
       </div>
@@ -785,7 +752,7 @@
           <span onclick="showScreen('notificaciones-empresa')"><i class="ti ti-bell" aria-hidden="true"></i> Alertas</span>
           <span onclick="showScreen('empresa-entrevistas')"><i class="ti ti-calendar-event" aria-hidden="true"></i> Entrevistas</span>
           <span class="active"><i class="ti ti-plus" aria-hidden="true"></i> Publicar</span>
-          <span onclick="showScreen('empresa-vacantes')"><i class="ti ti-briefcase" aria-hidden="true"></i> Mis vacantes</span>
+          <span onclick="showScreen('empresa-vacantes'); loadMyJobs()"><i class="ti ti-briefcase" aria-hidden="true"></i> Mis vacantes</span>
           <span onclick="showScreen('mensajes-empresa')"><i class="ti ti-message-circle" aria-hidden="true"></i> Mensajes</span>
           <span onclick="showScreen('empresa-mas')"><i class="ti ti-dots" aria-hidden="true"></i> Más</span>
         </div>
@@ -816,13 +783,13 @@
         <select style="margin-bottom:20px"><option>Desarrollador frontend — publicada hace 2 semanas</option><option>Analista de datos — publicada hace 1 mes</option><option>Diseñador UX — publicada hace 3 meses</option></select>
 
         <label>Título del puesto</label>
-        <input type="text" placeholder="Desarrollador frontend">
+        <input type="text" id="job-title-input" placeholder="Desarrollador frontend">
         <div class="empresa-form-row">
-          <div><label>Categoría</label><select><option>Tecnología</option><option>Ventas</option><option>Administrativo</option><option>Marketing</option><option>Recursos Humanos</option><option>Logística</option></select></div>
-          <div><label>Número de vacantes</label><input type="text" placeholder="1"></div>
+          <div><label>Categoría</label><select id="job-category-input"><option>Tecnología</option><option>Ventas</option><option>Administrativo</option><option>Marketing</option><option>Recursos Humanos</option><option>Logística</option></select></div>
+          <div><label>Número de vacantes</label><input type="text" id="job-positions-input" placeholder="1" value="1"></div>
         </div>
         <label>Descripción</label>
-        <textarea class="review-textarea" style="min-height:90px" placeholder="Describe las responsabilidades del puesto..."></textarea>
+        <textarea class="review-textarea" id="job-description-input" style="min-height:90px" placeholder="Describe las responsabilidades del puesto..."></textarea>
         <label>Habilidades requeridas</label>
         <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">
           <span style="font-size:11px;padding:5px 12px;border-radius:999px;background:#edeffb;color:#171717">React ✕</span>
@@ -830,20 +797,20 @@
         </div>
         <input type="text" placeholder="Agregar habilidad">
         <div class="empresa-form-row">
-          <div><label>Salario mínimo</label><input type="text" placeholder="$18,000"></div>
-          <div><label>Salario máximo</label><input type="text" placeholder="$24,000"></div>
+          <div><label>Salario mínimo</label><input type="text" id="job-salary-min-input" placeholder="$18,000"></div>
+          <div><label>Salario máximo</label><input type="text" id="job-salary-max-input" placeholder="$24,000"></div>
         </div>
         <div class="empresa-form-row">
-          <div><label>Modalidad</label><select><option>Remoto</option><option>Híbrido</option><option>Presencial</option></select></div>
-          <div><label>Tipo de contratación</label><select><option>Tiempo completo</option><option>Medio tiempo</option><option>Por proyecto</option></select></div>
+          <div><label>Modalidad</label><select id="job-mode-input"><option value="remoto">Remoto</option><option value="hibrido">Híbrido</option><option value="presencial">Presencial</option></select></div>
+          <div><label>Tipo de contratación</label><select id="job-contract-input"><option>Tiempo completo</option><option>Medio tiempo</option><option>Por proyecto</option></select></div>
         </div>
         <div class="empresa-form-row">
-          <div><label>Experiencia requerida</label><select><option>Sin experiencia</option><option>1-2 años</option><option selected>3-5 años</option><option>Más de 5 años</option></select></div>
-          <div><label>Educación mínima</label><select><option>Sin requisito</option><option>Preparatoria</option><option selected>Licenciatura</option><option>Maestría</option></select></div>
+          <div><label>Experiencia requerida</label><select id="job-experience-input"><option>Sin experiencia</option><option>1-2 años</option><option selected>3-5 años</option><option>Más de 5 años</option></select></div>
+          <div><label>Educación mínima</label><select id="job-education-input"><option>Sin requisito</option><option>Preparatoria</option><option selected>Licenciatura</option><option>Maestría</option></select></div>
         </div>
         <label>Fecha límite para postularse</label>
-        <input type="text" placeholder="dd/mm/aaaa">
-        <button class="submit-btn" onclick="showLoading('Publicando tu vacante...', 1600, () => showScreen('empresa-vacantes'))" style="margin-top:6px">Publicar vacante</button>
+        <input type="text" id="job-deadline-input" placeholder="dd/mm/aaaa">
+        <button class="submit-btn" onclick="publishJob()" style="margin-top:6px">Publicar vacante</button>
       </div>
     </div>
   </div>
@@ -880,9 +847,9 @@
     <div class="empresa-content">
       <div style="display:flex;align-items:center;gap:14px;margin-bottom:8px">
         <h1 style="margin:0">Mis vacantes</h1>
-        <span class="verified-tag">1 Activa</span>
-        <span class="verified-tag" style="background:var(--color-warning-bg);color:var(--color-warning-text)">1 Pausada</span>
-        <span class="verified-tag" style="background:var(--color-surface-alt-2);color:var(--color-ink-alt)">1 Cerrada</span>
+        <span class="verified-tag" id="stat-jobs-active">0 Activas</span>
+        <span class="verified-tag" style="background:var(--color-warning-bg);color:var(--color-warning-text)" id="stat-jobs-paused">0 Pausadas</span>
+        <span class="verified-tag" style="background:var(--color-surface-alt-2);color:var(--color-ink-alt)" id="stat-jobs-closed">0 Cerradas</span>
       </div>
       <div class="jobs-filterrow" style="padding:0;margin-bottom:20px">
         <button class="filter-chip" style="background:var(--color-ink);color:var(--color-surface)">Todas</button>
@@ -891,23 +858,8 @@
         <button class="filter-chip">Cerradas</button>
       </div>
 
-      <div class="job-card selected" onclick="showScreen('empresa-candidatos')" style="max-width:100%">
-        <span class="badge-rec">Activa</span>
-        <h4 style="padding-right:70px">Desarrollador frontend</h4>
-        <p class="salary">$18,000 - $24,000 Mensual</p>
-        <p class="loc">Monterrey, N.L. · Remoto · 8 candidatos</p>
-      </div>
-      <div class="job-card" onclick="showScreen('empresa-candidatos')" style="max-width:100%">
-        <p class="posted">Pausada</p>
-        <h4>Analista de datos</h4>
-        <p class="salary">$16,000 - $20,000 Mensual</p>
-        <p class="loc">Monterrey, N.L. · Híbrido · 3 candidatos</p>
-      </div>
-      <div class="job-card" onclick="showScreen('empresa-candidatos')" style="max-width:100%">
-        <p class="posted">Cerrada</p>
-        <h4>Diseñador UX</h4>
-        <p class="salary">$20,000 - $25,000 Mensual</p>
-        <p class="loc">Monterrey, N.L. · Presencial · 15 candidatos</p>
+      <div id="my-jobs-list">
+        <p class="field-hint-select">Cargando tus vacantes...</p>
       </div>
 
       <button class="btn-outline" onclick="showScreen('empresa-publicar')" style="margin-top:8px"><i class="ti ti-plus" aria-hidden="true"></i> Publicar otra vacante</button>
@@ -928,7 +880,7 @@
           <span onclick="showScreen('empresa-perfil')"><i class="ti ti-building" aria-hidden="true"></i> Mi <span class="tab-cursive">Empresa</span></span>
           <span onclick="showScreen('notificaciones-empresa')"><i class="ti ti-bell" aria-hidden="true"></i> Alertas</span>
           <span onclick="showScreen('empresa-entrevistas')"><i class="ti ti-calendar-event" aria-hidden="true"></i> Entrevistas</span>
-          <span onclick="showScreen('empresa-vacantes')"><i class="ti ti-arrow-left" aria-hidden="true"></i> Mis vacantes</span>
+          <span onclick="showScreen('empresa-vacantes'); loadMyJobs()"><i class="ti ti-arrow-left" aria-hidden="true"></i> Mis vacantes</span>
           <span onclick="showScreen('mensajes-empresa')"><i class="ti ti-message-circle" aria-hidden="true"></i> Mensajes</span>
           <span onclick="showScreen('empresa-mas')"><i class="ti ti-dots" aria-hidden="true"></i> Más</span>
         </div>
@@ -948,23 +900,23 @@
       </div>
     </div>
     <div class="empresa-content">
-      <h1 style="margin-bottom:2px">Desarrollador frontend</h1>
-      <p class="desc" style="margin-bottom:0">8 candidatos · 5 llegaron por WhatsApp</p>
+      <h1 style="margin-bottom:2px" id="kanban-job-title">Selecciona una vacante</h1>
+      <p class="desc" style="margin-bottom:0" id="kanban-job-subtitle">Ve a "Mis vacantes" y elige una para ver a sus candidatos.</p>
 
       <div class="kpi-row" id="kpi-row">
-        <div class="kpi-card active" data-stage="all" onclick="filterStage('all', this)"><b id="kpi-all">8</b><span>Total</span></div>
-        <div class="kpi-card" data-stage="nuevo" onclick="filterStage('nuevo', this)"><b id="kpi-nuevo">3</b><span>Nuevos</span></div>
-        <div class="kpi-card" data-stage="revisado" onclick="filterStage('revisado', this)"><b id="kpi-revisado">2</b><span>Revisados</span></div>
-        <div class="kpi-card" data-stage="entrevista" onclick="filterStage('entrevista', this)"><b id="kpi-entrevista">1</b><span>Entrevista</span></div>
-        <div class="kpi-card" data-stage="oferta" onclick="filterStage('oferta', this)"><b id="kpi-oferta">1</b><span>Oferta</span></div>
+        <div class="kpi-card active" data-stage="all" onclick="filterStage('all', this)"><b id="kpi-all">0</b><span>Total</span></div>
+        <div class="kpi-card" data-stage="nuevo" onclick="filterStage('nuevo', this)"><b id="kpi-nuevo">0</b><span>Nuevos</span></div>
+        <div class="kpi-card" data-stage="revisado" onclick="filterStage('revisado', this)"><b id="kpi-revisado">0</b><span>Revisados</span></div>
+        <div class="kpi-card" data-stage="entrevista" onclick="filterStage('entrevista', this)"><b id="kpi-entrevista">0</b><span>Entrevista</span></div>
+        <div class="kpi-card" data-stage="oferta" onclick="filterStage('oferta', this)"><b id="kpi-oferta">0</b><span>Oferta</span></div>
       </div>
 
       <div class="stage-bar-chart" id="stage-bar-chart">
-        <div class="stage-bar-segment" data-stage="nuevo" style="background:#edeffb;flex-grow:3" onclick="filterStage('nuevo')">3</div>
-        <div class="stage-bar-segment" data-stage="revisado" style="background:#fff4d9;flex-grow:2" onclick="filterStage('revisado')">2</div>
-        <div class="stage-bar-segment" data-stage="entrevista" style="background:#d9f2e3;flex-grow:1" onclick="filterStage('entrevista')">1</div>
-        <div class="stage-bar-segment" data-stage="oferta" style="background:#ecdcfa;flex-grow:1" onclick="filterStage('oferta')">1</div>
-        <div class="stage-bar-segment" data-stage="rechazado" style="background:#fde4e4;flex-grow:1" onclick="filterStage('rechazado')">1</div>
+        <div class="stage-bar-segment" data-stage="nuevo" style="background:#edeffb;flex-grow:0.001" onclick="filterStage('nuevo')">0</div>
+        <div class="stage-bar-segment" data-stage="revisado" style="background:#fff4d9;flex-grow:0.001" onclick="filterStage('revisado')">0</div>
+        <div class="stage-bar-segment" data-stage="entrevista" style="background:#d9f2e3;flex-grow:0.001" onclick="filterStage('entrevista')">0</div>
+        <div class="stage-bar-segment" data-stage="oferta" style="background:#ecdcfa;flex-grow:0.001" onclick="filterStage('oferta')">0</div>
+        <div class="stage-bar-segment" data-stage="rechazado" style="background:#fde4e4;flex-grow:0.001" onclick="filterStage('rechazado')">0</div>
       </div>
       <div class="stage-legend">
         <div class="stage-legend-item" onclick="filterStage('nuevo')"><span class="stage-legend-dot" style="background:#c7d0f0"></span>Nuevo</div>
@@ -976,84 +928,27 @@
 
       <div class="kanban-board">
         <div class="kanban-col" data-stage="nuevo">
-          <div class="kanban-col-head"><b>Nuevo</b><span class="kanban-count">3</span></div>
-          <div class="kanban-dropzone" ondragover="allowDrop(event)" ondrop="dropCard(event)">
-            <div class="kanban-card" id="cand-1" draggable="true" ondragstart="dragStart(event)" ondragend="dragEnd(event)">
-              <div class="kanban-card-top" style="cursor:pointer" onclick="showScreen('empresa-candidato-detalle')"><div class="candidate-avatar">AL</div><b>Ana López</b></div>
-              <div class="kanban-source"><i class="ti ti-brand-whatsapp" aria-hidden="true"></i> WhatsApp · hace 1 día</div>
-              <div class="kanban-tags"><span class="kanban-tag">3 años exp.</span><span class="kanban-tag">React</span></div>
-              <div class="kanban-card-actions"><button class="kanban-icon-btn" onclick="showScreen('chat-empresa')" aria-label="Enviar mensaje al candidato"><i class="ti ti-message-circle" aria-hidden="true"></i></button><button class="kanban-icon-btn" onclick="showToast('Marcando número...')" aria-label="Llamar al candidato"><i class="ti ti-phone" aria-hidden="true"></i></button></div>
-            </div>
-            <div class="kanban-card" id="cand-2" draggable="true" ondragstart="dragStart(event)" ondragend="dragEnd(event)">
-              <div class="kanban-card-top" style="cursor:pointer" onclick="showScreen('empresa-candidato-detalle')"><div class="candidate-avatar">JP</div><b>Jorge Peña</b></div>
-              <div class="kanban-source"><i class="ti ti-brand-whatsapp" aria-hidden="true"></i> WhatsApp · hace 4 días</div>
-              <div class="kanban-tags"><span class="kanban-tag">1 año exp.</span><span class="kanban-tag">CSS</span></div>
-              <div class="kanban-card-actions"><button class="kanban-icon-btn" onclick="showScreen('chat-empresa')" aria-label="Enviar mensaje al candidato"><i class="ti ti-message-circle" aria-hidden="true"></i></button><button class="kanban-icon-btn" onclick="showToast('Marcando número...')" aria-label="Llamar al candidato"><i class="ti ti-phone" aria-hidden="true"></i></button></div>
-            </div>
-            <div class="kanban-card" id="cand-3" draggable="true" ondragstart="dragStart(event)" ondragend="dragEnd(event)">
-              <div class="kanban-card-top" style="cursor:pointer" onclick="showScreen('empresa-candidato-detalle')"><div class="candidate-avatar">SV</div><b>Sofía Vega</b></div>
-              <div class="kanban-source"><i class="ti ti-world" aria-hidden="true"></i> Plataforma · hace 5 días</div>
-              <div class="kanban-tags"><span class="kanban-tag">4 años exp.</span><span class="kanban-tag">Vue</span></div>
-              <div class="kanban-card-actions"><button class="kanban-icon-btn" onclick="showScreen('chat-empresa')" aria-label="Enviar mensaje al candidato"><i class="ti ti-message-circle" aria-hidden="true"></i></button><button class="kanban-icon-btn" onclick="showToast('Marcando número...')" aria-label="Llamar al candidato"><i class="ti ti-phone" aria-hidden="true"></i></button></div>
-            </div>
-          </div>
+          <div class="kanban-col-head"><b>Nuevo</b><span class="kanban-count">0</span></div>
+          <div class="kanban-dropzone" id="kanban-dropzone-nuevo" ondragover="allowDrop(event)" ondrop="dropCard(event)"></div>
         </div>
-
         <div class="kanban-col" data-stage="revisado">
-          <div class="kanban-col-head"><b>Revisado</b><span class="kanban-count">2</span></div>
-          <div class="kanban-dropzone" ondragover="allowDrop(event)" ondrop="dropCard(event)">
-            <div class="kanban-card" id="cand-4" draggable="true" ondragstart="dragStart(event)" ondragend="dragEnd(event)">
-              <div class="kanban-card-top" style="cursor:pointer" onclick="showScreen('empresa-candidato-detalle')"><div class="candidate-avatar">CR</div><b>Carlos Ruiz</b></div>
-              <div class="kanban-source"><i class="ti ti-world" aria-hidden="true"></i> Plataforma · hace 2 días</div>
-              <div class="kanban-tags"><span class="kanban-tag">2 años exp.</span><span class="kanban-tag">React</span></div>
-              <div class="kanban-card-actions"><button class="kanban-icon-btn" onclick="showScreen('chat-empresa')" aria-label="Enviar mensaje al candidato"><i class="ti ti-message-circle" aria-hidden="true"></i></button><button class="kanban-icon-btn" onclick="showToast('Marcando número...')" aria-label="Llamar al candidato"><i class="ti ti-phone" aria-hidden="true"></i></button></div>
-            </div>
-            <div class="kanban-card" id="cand-5" draggable="true" ondragstart="dragStart(event)" ondragend="dragEnd(event)">
-              <div class="kanban-card-top" style="cursor:pointer" onclick="showScreen('empresa-candidato-detalle')"><div class="candidate-avatar">LF</div><b>Luis Flores</b></div>
-              <div class="kanban-source"><i class="ti ti-brand-whatsapp" aria-hidden="true"></i> WhatsApp · hace 2 días</div>
-              <div class="kanban-tags"><span class="kanban-tag">5 años exp.</span><span class="kanban-tag">Next.js</span></div>
-              <div class="kanban-card-actions"><button class="kanban-icon-btn" onclick="showScreen('chat-empresa')" aria-label="Enviar mensaje al candidato"><i class="ti ti-message-circle" aria-hidden="true"></i></button><button class="kanban-icon-btn" onclick="showToast('Marcando número...')" aria-label="Llamar al candidato"><i class="ti ti-phone" aria-hidden="true"></i></button></div>
-            </div>
-          </div>
+          <div class="kanban-col-head"><b>Revisado</b><span class="kanban-count">0</span></div>
+          <div class="kanban-dropzone" id="kanban-dropzone-revisado" ondragover="allowDrop(event)" ondrop="dropCard(event)"></div>
         </div>
-
         <div class="kanban-col" data-stage="entrevista">
-          <div class="kanban-col-head"><b>Entrevista</b><span class="kanban-count">1</span></div>
-          <div class="kanban-dropzone" ondragover="allowDrop(event)" ondrop="dropCard(event)">
-            <div class="kanban-card" id="cand-6" draggable="true" ondragstart="dragStart(event)" ondragend="dragEnd(event)">
-              <div class="kanban-card-top" style="cursor:pointer" onclick="showScreen('empresa-candidato-detalle')"><div class="candidate-avatar">MD</div><b>Marta Díaz</b></div>
-              <div class="kanban-source"><i class="ti ti-brand-whatsapp" aria-hidden="true"></i> WhatsApp · hace 3 días</div>
-              <div class="kanban-tags"><span class="kanban-tag">3 años exp.</span><span class="kanban-tag">TypeScript</span></div>
-              <div class="kanban-card-actions"><button class="kanban-icon-btn" onclick="showScreen('chat-empresa')" aria-label="Enviar mensaje al candidato"><i class="ti ti-message-circle" aria-hidden="true"></i></button><button class="kanban-icon-btn" onclick="showToast('Marcando número...')" aria-label="Llamar al candidato"><i class="ti ti-phone" aria-hidden="true"></i></button></div>
-            </div>
-          </div>
+          <div class="kanban-col-head"><b>Entrevista</b><span class="kanban-count">0</span></div>
+          <div class="kanban-dropzone" id="kanban-dropzone-entrevista" ondragover="allowDrop(event)" ondrop="dropCard(event)"></div>
         </div>
-
         <div class="kanban-col" data-stage="oferta">
-          <div class="kanban-col-head"><b>Oferta</b><span class="kanban-count">1</span></div>
-          <div class="kanban-dropzone" ondragover="allowDrop(event)" ondrop="dropCard(event)">
-            <div class="kanban-card" id="cand-7" draggable="true" ondragstart="dragStart(event)" ondragend="dragEnd(event)">
-              <div class="kanban-card-top" style="cursor:pointer" onclick="showScreen('empresa-candidato-detalle')"><div class="candidate-avatar">RT</div><b>Renata Torres</b></div>
-              <div class="kanban-source"><i class="ti ti-world" aria-hidden="true"></i> Plataforma · hace 6 días</div>
-              <div class="kanban-tags"><span class="kanban-tag">6 años exp.</span><span class="kanban-tag">React</span></div>
-              <div class="kanban-card-actions"><button class="kanban-icon-btn" onclick="showScreen('chat-empresa')" aria-label="Enviar mensaje al candidato"><i class="ti ti-message-circle" aria-hidden="true"></i></button><button class="kanban-icon-btn" onclick="showToast('Marcando número...')" aria-label="Llamar al candidato"><i class="ti ti-phone" aria-hidden="true"></i></button></div>
-            </div>
-          </div>
+          <div class="kanban-col-head"><b>Oferta</b><span class="kanban-count">0</span></div>
+          <div class="kanban-dropzone" id="kanban-dropzone-oferta" ondragover="allowDrop(event)" ondrop="dropCard(event)"></div>
         </div>
-
         <div class="kanban-col" data-stage="rechazado">
-          <div class="kanban-col-head"><b>Rechazado</b><span class="kanban-count">1</span></div>
-          <div class="kanban-dropzone" ondragover="allowDrop(event)" ondrop="dropCard(event)">
-            <div class="kanban-card" id="cand-8" draggable="true" ondragstart="dragStart(event)" ondragend="dragEnd(event)">
-              <div class="kanban-card-top" style="cursor:pointer" onclick="showScreen('empresa-candidato-detalle')"><div class="candidate-avatar">DP</div><b>Daniel Prado</b></div>
-              <div class="kanban-source"><i class="ti ti-brand-whatsapp" aria-hidden="true"></i> WhatsApp · hace 1 semana</div>
-              <div class="kanban-tags"><span class="kanban-tag">0 años exp.</span></div>
-              <div class="kanban-card-actions"><button class="kanban-icon-btn" onclick="showScreen('chat-empresa')" aria-label="Enviar mensaje al candidato"><i class="ti ti-message-circle" aria-hidden="true"></i></button><button class="kanban-icon-btn" onclick="showToast('Marcando número...')" aria-label="Llamar al candidato"><i class="ti ti-phone" aria-hidden="true"></i></button></div>
-            </div>
-          </div>
+          <div class="kanban-col-head"><b>Rechazado</b><span class="kanban-count">0</span></div>
+          <div class="kanban-dropzone" id="kanban-dropzone-rechazado" ondragover="allowDrop(event)" ondrop="dropCard(event)"></div>
         </div>
       </div>
-      <p style="font-size:11.5px;color:#9a9a9a;margin-top:10px"><i class="ti ti-arrows-move" aria-hidden="true"></i> Arrastra una tarjeta entre columnas para cambiar su etapa — los totales se actualizan solos.</p>
+      <p style="font-size:11.5px;color:#9a9a9a;margin-top:10px"><i class="ti ti-arrows-move" aria-hidden="true"></i> Arrastra una tarjeta entre columnas para cambiar su etapa — se guarda solo.</p>
     </div>
   </div>
 
@@ -1064,7 +959,7 @@
         <div class="brand"><div class="brand-mark"><img src="assets/img/logo-plane-white.png" alt=""></div><span class="brand-name">Aplicca</span></div>
         <div class="jobs-tabs">
           <span onclick="showScreen('candidato-dashboard')"><i class="ti ti-home" aria-hidden="true"></i> Mi <span class="tab-cursive">Dashboard</span></span>
-          <span onclick="showScreen('vacantes')"><i class="ti ti-search" aria-hidden="true"></i> Buscar</span>
+          <span onclick="showScreen('vacantes'); loadJobsSearch()"><i class="ti ti-search" aria-hidden="true"></i> Buscar</span>
           <span class="active"><i class="ti ti-message-circle" aria-hidden="true"></i> Mensajes</span>
           <span onclick="showScreen('notificaciones')"><i class="ti ti-bell" aria-hidden="true"></i> Alertas</span>
           <span onclick="showScreen('candidato-cuenta')"><i class="ti ti-user-circle" aria-hidden="true"></i> Mi cuenta</span>
@@ -1147,7 +1042,7 @@
           <span onclick="showScreen('empresa-perfil')"><i class="ti ti-building" aria-hidden="true"></i> Mi <span class="tab-cursive">Empresa</span></span>
           <span onclick="showScreen('notificaciones-empresa')"><i class="ti ti-bell" aria-hidden="true"></i> Alertas</span>
           <span onclick="showScreen('empresa-entrevistas')"><i class="ti ti-calendar-event" aria-hidden="true"></i> Entrevistas</span>
-          <span onclick="showScreen('empresa-vacantes')"><i class="ti ti-briefcase" aria-hidden="true"></i> Mis vacantes</span>
+          <span onclick="showScreen('empresa-vacantes'); loadMyJobs()"><i class="ti ti-briefcase" aria-hidden="true"></i> Mis vacantes</span>
           <span class="active"><i class="ti ti-message-circle" aria-hidden="true"></i> Mensajes</span>
           <span onclick="showScreen('empresa-mas')"><i class="ti ti-dots" aria-hidden="true"></i> Más</span>
         </div>
@@ -1257,7 +1152,7 @@
         <div class="brand"><div class="brand-mark"><img src="assets/img/logo-plane-white.png" alt=""></div><span class="brand-name">Aplicca</span></div>
         <div class="jobs-tabs">
           <span onclick="showScreen('candidato-dashboard')"><i class="ti ti-home" aria-hidden="true"></i> Mi <span class="tab-cursive">Dashboard</span></span>
-          <span onclick="showScreen('vacantes')"><i class="ti ti-search" aria-hidden="true"></i> Buscar</span>
+          <span onclick="showScreen('vacantes'); loadJobsSearch()"><i class="ti ti-search" aria-hidden="true"></i> Buscar</span>
           <span onclick="showScreen('mensajes-candidato')"><i class="ti ti-message-circle" aria-hidden="true"></i> Mensajes</span>
           <span class="active"><i class="ti ti-bell" aria-hidden="true"></i> Alertas</span>
           <span onclick="showScreen('candidato-cuenta')"><i class="ti ti-user-circle" aria-hidden="true"></i> Mi cuenta</span>
@@ -1372,7 +1267,7 @@
         <div class="brand"><div class="brand-mark"><img src="assets/img/logo-plane-white.png" alt=""></div><span class="brand-name">Aplicca</span></div>
         <div class="jobs-tabs">
           <span class="active"><i class="ti ti-home" aria-hidden="true"></i> Mi <span class="tab-cursive">Dashboard</span></span>
-          <span onclick="showScreen('vacantes')"><i class="ti ti-search" aria-hidden="true"></i> Buscar</span>
+          <span onclick="showScreen('vacantes'); loadJobsSearch()"><i class="ti ti-search" aria-hidden="true"></i> Buscar</span>
           <span onclick="showScreen('mensajes-candidato')"><i class="ti ti-message-circle" aria-hidden="true"></i> Mensajes</span>
           <span onclick="showScreen('notificaciones')"><i class="ti ti-bell" aria-hidden="true"></i> Alertas</span>
           <span onclick="showScreen('candidato-cuenta')"><i class="ti ti-user-circle" aria-hidden="true"></i> Mi cuenta</span>
@@ -1400,8 +1295,8 @@
 
       <p class="field-hint-select" style="margin:0 0 8px;font-weight:600;color:var(--color-ink-alt)">Descubrimientos recientes</p>
       <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px">
-        <div class="tag-chip" style="background:var(--color-surface-alt-2);border-color:var(--color-border);color:var(--color-ink);cursor:pointer" onclick="showScreen('vacantes')"><b style="color:var(--color-ink)">Coordinador de eventos</b><span style="color:var(--color-text-muted)">Nuevo León</span></div>
-        <div class="tag-chip" style="background:var(--color-surface-alt-2);border-color:var(--color-border);color:var(--color-ink);cursor:pointer" onclick="showScreen('vacantes')"><b style="color:var(--color-ink)">Atracción de talento</b><span style="color:var(--color-text-muted)">Remoto</span></div>
+        <div class="tag-chip" style="background:var(--color-surface-alt-2);border-color:var(--color-border);color:var(--color-ink);cursor:pointer" onclick="showScreen('vacantes'); loadJobsSearch()"><b style="color:var(--color-ink)">Coordinador de eventos</b><span style="color:var(--color-text-muted)">Nuevo León</span></div>
+        <div class="tag-chip" style="background:var(--color-surface-alt-2);border-color:var(--color-border);color:var(--color-ink);cursor:pointer" onclick="showScreen('vacantes'); loadJobsSearch()"><b style="color:var(--color-ink)">Atracción de talento</b><span style="color:var(--color-text-muted)">Remoto</span></div>
         <div class="tag-chip" style="background:var(--color-surface-alt-2);border-color:var(--color-border);color:var(--color-ink);cursor:pointer" onclick="showScreen('candidato-busquedas')"><b style="color:var(--color-ink)">Recursos humanos</b><span style="color:var(--color-text-muted)">+3 filtros</span></div>
       </div>
 
@@ -1433,33 +1328,33 @@
 
       <div style="display:flex;justify-content:space-between;align-items:center;margin:28px 0 12px">
         <p style="font-weight:600;font-size:14px;margin:0;font-family:'Sora',sans-serif">Postulaciones recientes</p>
-        <button class="btn-outline" onclick="showScreen('candidato-postulaciones')">Ver todas</button>
+        <button class="btn-outline" onclick="showScreen('candidato-postulaciones'); loadMyApplications()">Ver todas</button>
       </div>
       <div class="candidate-card" onclick="showScreen('chat-candidato')">
         <div><p style="margin:0;font-size:13.5px;font-weight:600">Desarrollador frontend</p><p style="margin:2px 0 0;font-size:11.5px;color:#9a9a9a"><i class="ti ti-brand-whatsapp" aria-hidden="true"></i> Empresa TechX</p></div>
         <span class="status-pill status-entrevista">Entrevista</span>
       </div>
-      <div class="candidate-card" onclick="showScreen('vacantes')">
+      <div class="candidate-card" onclick="showScreen('vacantes'); loadJobsSearch()">
         <div><p style="margin:0;font-size:13.5px;font-weight:600">Analista de datos</p><p style="margin:2px 0 0;font-size:11.5px;color:#9a9a9a">Grupo Norte</p></div>
         <span class="status-pill status-revisado">Vista</span>
       </div>
-      <div class="candidate-card" onclick="showScreen('vacantes')">
+      <div class="candidate-card" onclick="showScreen('vacantes'); loadJobsSearch()">
         <div><p style="margin:0;font-size:13.5px;font-weight:600">Diseñador UX</p><p style="margin:2px 0 0;font-size:11.5px;color:#9a9a9a">Estudio Creativo</p></div>
         <span class="status-pill" style="background:#fde4e4;color:#b3261e">Descartada</span>
       </div>
 
       <div style="display:flex;justify-content:space-between;align-items:center;margin:28px 0 12px">
         <p style="font-weight:600;font-size:14px;margin:0;font-family:'Sora',sans-serif">Sugerencias para ti</p>
-        <button class="btn-outline" onclick="showScreen('vacantes')">Ver más</button>
+        <button class="btn-outline" onclick="showScreen('vacantes'); loadJobsSearch()">Ver más</button>
       </div>
       <div class="job-mini-grid" style="grid-template-columns:repeat(3,1fr)">
-        <div class="job-mini-card" onclick="showScreen('vacantes')">
+        <div class="job-mini-card" onclick="showScreen('vacantes'); loadJobsSearch()">
           <div class="job-mini-top"><div class="job-mini-logo">GN</div><span class="job-mini-salary">$16K-20K</span></div>
           <b class="title">Coordinadora de eventos</b>
           <div class="job-mini-meta"><span>Presencial</span><span>·</span><span>Monterrey</span></div>
           <span class="job-mini-time">Hace 3 días</span>
         </div>
-        <div class="job-mini-card" onclick="showScreen('vacantes')">
+        <div class="job-mini-card" onclick="showScreen('vacantes'); loadJobsSearch()">
           <div class="job-mini-top"><div class="job-mini-logo">H4</div><span class="job-mini-salary">$20K-21K</span></div>
           <b class="title">Coordinadora de eventos</b>
           <div class="job-mini-meta"><span>Presencial</span><span>·</span><span>Monterrey</span></div>
@@ -1480,7 +1375,7 @@
         <div class="brand"><div class="brand-mark"><img src="assets/img/logo-plane-white.png" alt=""></div><span class="brand-name">Aplicca</span></div>
         <div class="jobs-tabs">
           <span onclick="showScreen('candidato-dashboard')"><i class="ti ti-home" aria-hidden="true"></i> Mi <span class="tab-cursive">Dashboard</span></span>
-          <span onclick="showScreen('vacantes')"><i class="ti ti-search" aria-hidden="true"></i> Buscar</span>
+          <span onclick="showScreen('vacantes'); loadJobsSearch()"><i class="ti ti-search" aria-hidden="true"></i> Buscar</span>
           <span onclick="showScreen('mensajes-candidato')"><i class="ti ti-message-circle" aria-hidden="true"></i> Mensajes</span>
           <span class="active"><i class="ti ti-user-circle" aria-hidden="true"></i> Mi cuenta</span>
         </div>
@@ -1505,7 +1400,7 @@
         <div class="hub-card" onclick="showScreen('candidato-perfil')"><i class="ti ti-user" aria-hidden="true"></i><b>Mi perfil</b><span>Revisa y edita tu información y CV</span></div>
         <div class="hub-card" onclick="showScreen('preferencias-empleo')"><i class="ti ti-adjustments" aria-hidden="true"></i><b>Preferencias de empleo</b><span>Para emparejarte mejor, no es visible en tu CV</span></div>
         <div class="hub-card" onclick="showScreen('candidato-guardadas')"><i class="ti ti-bookmark" aria-hidden="true"></i><b>Vacantes guardadas</b><span>Las que marcaste para ver después</span></div>
-        <div class="hub-card" onclick="showScreen('candidato-postulaciones')"><i class="ti ti-list-check" aria-hidden="true"></i><b>Mis postulaciones</b><span>Da seguimiento al estatus de cada una</span></div>
+        <div class="hub-card" onclick="showScreen('candidato-postulaciones'); loadMyApplications()"><i class="ti ti-list-check" aria-hidden="true"></i><b>Mis postulaciones</b><span>Da seguimiento al estatus de cada una</span></div>
         <div class="hub-card" onclick="showScreen('candidato-busquedas')"><i class="ti ti-bell-ringing" aria-hidden="true"></i><b>Búsquedas guardadas</b><span>Recibe alertas de vacantes nuevas</span></div>
         <div class="hub-card" onclick="showScreen('candidato-sueldos')"><i class="ti ti-currency-dollar" aria-hidden="true"></i><b>Explorador de sueldos</b><span>Compara rangos salariales por puesto</span></div>
         <div class="hub-card" onclick="showScreen('candidato-configuracion')"><i class="ti ti-settings" aria-hidden="true"></i><b>Configuración</b><span>Contraseña, notificaciones y privacidad</span></div>
@@ -1748,13 +1643,13 @@
     </div>
     <div class="empresa-content" style="max-width:640px">
       <h1 style="margin-bottom:20px">Vacantes guardadas</h1>
-      <div class="job-card" onclick="showScreen('vacantes')" style="max-width:100%">
+      <div class="job-card" onclick="showScreen('vacantes'); loadJobsSearch()" style="max-width:100%">
         <button class="password-toggle" style="position:absolute;top:14px;right:14px;color:#171717" onclick="event.stopPropagation()" aria-label="Quitar de guardados" aria-pressed="true"><i class="ti ti-bookmark-filled" aria-hidden="true"></i></button>
         <h4 style="padding-right:40px">Coordinador de Talento, Eventos y Cultura Organizacional</h4>
         <p class="salary">$15,000 - $20,000 Mensual</p>
         <p class="loc">General Escobedo, Nuevo León · guardada hace 2 días</p>
       </div>
-      <div class="job-card" onclick="showScreen('vacantes')" style="max-width:100%">
+      <div class="job-card" onclick="showScreen('vacantes'); loadJobsSearch()" style="max-width:100%">
         <button class="password-toggle" style="position:absolute;top:14px;right:14px;color:#171717" onclick="event.stopPropagation()" aria-label="Quitar de guardados" aria-pressed="true"><i class="ti ti-bookmark-filled" aria-hidden="true"></i></button>
         <h4 style="padding-right:40px">Coordinadora de eventos</h4>
         <p class="salary">$20,000 - $21,000 Mensual</p>
@@ -1786,17 +1681,8 @@
     </div>
     <div class="empresa-content" style="max-width:640px">
       <h1 style="margin-bottom:20px">Mis postulaciones</h1>
-      <div class="candidate-card" onclick="showScreen('chat-candidato')">
-        <div><p style="margin:0;font-size:13.5px;font-weight:600">Desarrollador frontend</p><p style="margin:2px 0 0;font-size:11.5px;color:#9a9a9a"><i class="ti ti-brand-whatsapp" aria-hidden="true"></i> Empresa TechX · aplicaste por WhatsApp</p></div>
-        <span class="status-pill status-entrevista">Entrevista</span>
-      </div>
-      <div class="candidate-card" onclick="showScreen('vacantes')">
-        <div><p style="margin:0;font-size:13.5px;font-weight:600">Analista de datos</p><p style="margin:2px 0 0;font-size:11.5px;color:#9a9a9a">Grupo Norte · aplicaste desde la plataforma</p></div>
-        <span class="status-pill status-revisado">Vista</span>
-      </div>
-      <div class="candidate-card" onclick="showScreen('vacantes')">
-        <div><p style="margin:0;font-size:13.5px;font-weight:600">Diseñador UX</p><p style="margin:2px 0 0;font-size:11.5px;color:#9a9a9a">Estudio Creativo · aplicaste desde la plataforma</p></div>
-        <span class="status-pill" style="background:#fde4e4;color:#b3261e">Rechazada</span>
+      <div id="my-applications-list">
+        <p class="field-hint-select">Cargando tus postulaciones...</p>
       </div>
     </div>
   </div>
@@ -1837,7 +1723,7 @@
         <div><b>Recursos humanos · $18,000+</b><span>1 vacante nueva hoy</span></div>
         <label class="toggle-switch"><input type="checkbox"><span class="toggle-slider"></span></label>
       </div>
-      <button class="btn-outline" style="margin-top:16px" onclick="showScreen('vacantes')"><i class="ti ti-plus" aria-hidden="true"></i> Nueva búsqueda guardada</button>
+      <button class="btn-outline" style="margin-top:16px" onclick="showScreen('vacantes'); loadJobsSearch()"><i class="ti ti-plus" aria-hidden="true"></i> Nueva búsqueda guardada</button>
     </div>
   </div>
 
@@ -2023,7 +1909,7 @@
           <span onclick="showScreen('empresa-perfil')"><i class="ti ti-building" aria-hidden="true"></i> Mi <span class="tab-cursive">Empresa</span></span>
           <span onclick="showScreen('notificaciones-empresa')"><i class="ti ti-bell" aria-hidden="true"></i> Alertas</span>
           <span onclick="showScreen('empresa-entrevistas')"><i class="ti ti-calendar-event" aria-hidden="true"></i> Entrevistas</span>
-          <span onclick="showScreen('empresa-vacantes')"><i class="ti ti-briefcase" aria-hidden="true"></i> Mis vacantes</span>
+          <span onclick="showScreen('empresa-vacantes'); loadMyJobs()"><i class="ti ti-briefcase" aria-hidden="true"></i> Mis vacantes</span>
           <span onclick="showScreen('mensajes-empresa')"><i class="ti ti-message-circle" aria-hidden="true"></i> Mensajes</span>
           <span class="active"><i class="ti ti-dots" aria-hidden="true"></i> Más</span>
         </div>
@@ -2060,7 +1946,7 @@
   <div id="screen-empresa-compartir" class="screen">
     <div class="auth-wrap" style="display:flex">
       <div class="card" style="text-align:center">
-        <button class="back-btn" onclick="showScreen('empresa-vacantes')" style="text-align:left">&larr; Volver</button>
+        <button class="back-btn" onclick="showScreen('empresa-vacantes'); loadMyJobs()" style="text-align:left">&larr; Volver</button>
         <h1>Comparte tu vacante</h1>
         <p class="desc">Desarrollador frontend · cualquiera que use este link o QR entra directo a aplicar por WhatsApp.</p>
 
@@ -2411,6 +2297,7 @@
         <nav class="home-nav-links">
           <a href="#" onclick="scrollToId('emp-como-funciona')">Cómo funciona</a>
           <a href="#" onclick="scrollToId('emp-precios')">Precios</a>
+          <a href="#" onclick="scrollToId('emp-faq')">Preguntas frecuentes</a>
         </nav>
       </div>
       <div class="home-nav-right">
@@ -2500,6 +2387,51 @@
           <b class="price">$2,500<span style="font-size:12px;font-weight:400">/mes</span></b>
           <ul><li>Vacantes ilimitadas</li><li>Buscar en base de candidatos</li><li>Equipo multiusuario</li></ul>
           <button class="btn-outline" style="width:100%" onclick="showScreen('empresa-registro')">Crear cuenta</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="split reveal">
+      <div class="split-img" style="background:var(--color-surface-alt-2);display:flex;align-items:center;justify-content:center">
+        <i class="ti ti-scale" aria-hidden="true" style="font-size:64px;color:var(--color-icon-muted)"></i>
+      </div>
+      <div class="split-text">
+        <h2>¿Por qué no <span class="fw-heavy">otra bolsa de trabajo</span>?</h2>
+        <p>En Indeed pagas por clic, no por candidato — y ni te enteras cuánto te costó el que sí contrataste. En Aplicca, pagas una vez por vacante, sin sorpresas en la factura, y el candidato aplica directo desde WhatsApp en menos de 2 minutos, sin registrarse en ninguna plataforma nueva.</p>
+        <div class="highlight-box">
+          <div class="highlight-icon"><i class="ti ti-shield-check" aria-hidden="true"></i></div>
+          <div><b>Empresas verificadas, candidatos reales</b><span>Revisamos el dominio de cada empresa antes de dejarla publicar — nada de vacantes fantasma pidiendo datos a cambio de nada.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonial-wrap reveal">
+      <div class="testimonial-avatar">RS</div>
+      <div class="testimonial-body">
+        <i class="ti ti-quote" aria-hidden="true" class="quote-badge"></i>
+        <p>"Publicamos un puesto de <b>Desarrollador Frontend</b> un lunes y para el viernes ya teníamos 3 entrevistas agendadas — <b>todo por WhatsApp</b>, sin que nadie de mi equipo tuviera que aprender una plataforma nueva."</p>
+        <div class="testimonial-author"><b>Roberto Salas</b><span>Gerente de RH · Empresa TechX</span></div>
+      </div>
+    </section>
+
+    <section class="faq-section reveal" id="emp-faq">
+      <h2 style="text-align:center;margin-bottom:32px">Preguntas de <span class="fw-heavy">empresas</span></h2>
+      <div class="faq-block">
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this.parentElement)"><span>¿Cómo verifican que una empresa es real?</span><i class="ti ti-chevron-down" aria-hidden="true"></i></div>
+          <div class="faq-answer"><p>Revisamos que tu correo tenga dominio corporativo (no aceptamos Gmail, Hotmail, etc. para cuentas de empresa) y validamos manualmente los datos fiscales que nos das al registrarte, antes de que tu primera vacante quede visible para candidatos.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this.parentElement)"><span>¿Cuándo se cobra, exactamente?</span><i class="ti ti-chevron-down" aria-hidden="true"></i></div>
+          <div class="faq-answer"><p>En el plan por vacante, se cobra al momento de publicar, no antes ni por adelantado. Puedes empezar gratis con una vacante activa para probar la plataforma antes de pagar nada.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this.parentElement)"><span>¿Necesito que los candidatos usen WhatsApp Business?</span><i class="ti ti-chevron-down" aria-hidden="true"></i></div>
+          <div class="faq-answer"><p>No. El candidato solo necesita WhatsApp normal en su celular. Nosotros manejamos la parte de negocio del lado de Aplicca — para ti y para el candidato, es una conversación de WhatsApp como cualquier otra.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this.parentElement)"><span>¿Puedo cancelar cuando quiera?</span><i class="ti ti-chevron-down" aria-hidden="true"></i></div>
+          <div class="faq-answer"><p>Sí. El plan por vacante no tiene compromiso — pagas por la publicación puntual. La suscripción mensual se puede cancelar en cualquier momento desde Planes y facturación, sin penalización.</p></div>
         </div>
       </div>
     </section>
@@ -2624,7 +2556,7 @@
         <div class="jobs-tabs">
           <span onclick="showScreen('empresa-perfil')"><i class="ti ti-building" aria-hidden="true"></i> Mi <span class="tab-cursive">Empresa</span></span>
           <span onclick="showScreen('notificaciones-empresa')"><i class="ti ti-bell" aria-hidden="true"></i> Alertas</span>
-          <span onclick="showScreen('empresa-vacantes')"><i class="ti ti-briefcase" aria-hidden="true"></i> Mis vacantes</span>
+          <span onclick="showScreen('empresa-vacantes'); loadMyJobs()"><i class="ti ti-briefcase" aria-hidden="true"></i> Mis vacantes</span>
           <span class="active"><i class="ti ti-calendar-event" aria-hidden="true"></i> Entrevistas</span>
           <span onclick="showScreen('mensajes-empresa')"><i class="ti ti-message-circle" aria-hidden="true"></i> Mensajes</span>
         </div>
@@ -2846,7 +2778,7 @@
     <div class="empresa-topbar-wrap">
       <div class="jobs-topbar">
         <div class="brand"><div class="brand-mark"><img src="assets/img/logo-plane-white.png" alt=""></div><span class="brand-name">Aplicca</span></div>
-        <div class="jobs-tabs"><span onclick="showScreen('vacantes')"><i class="ti ti-arrow-left" aria-hidden="true"></i> Volver a la vacante</span></div>
+        <div class="jobs-tabs"><span onclick="showScreen('vacantes'); loadJobsSearch()"><i class="ti ti-arrow-left" aria-hidden="true"></i> Volver a la vacante</span></div>
         <div class="account-menu-wrap">
           <button class="menu-trigger" onclick="toggleAccountMenu(event)" aria-label="Abrir menú de cuenta" aria-haspopup="true"><i class="ti ti-menu-2" aria-hidden="true"></i></button>
           <div class="account-menu">
@@ -2894,13 +2826,13 @@
 
       <p style="font-weight:600;font-size:14px;margin:0 0 12px;font-family:'Sora',sans-serif">Vacantes activas en Empresa TechX</p>
       <div class="job-mini-grid" style="grid-template-columns:repeat(2,1fr)">
-        <div class="job-mini-card" onclick="showScreen('vacantes')">
+        <div class="job-mini-card" onclick="showScreen('vacantes'); loadJobsSearch()">
           <div class="job-mini-top"><div class="job-mini-logo">TX</div><span class="job-mini-salary">$18K-24K</span></div>
           <b class="title">Desarrollador Frontend</b>
           <div class="job-mini-meta"><span>Remoto</span><span>·</span><span>Monterrey</span></div>
           <span class="job-mini-time">Hace 1 día</span>
         </div>
-        <div class="job-mini-card" onclick="showScreen('vacantes')">
+        <div class="job-mini-card" onclick="showScreen('vacantes'); loadJobsSearch()">
           <div class="job-mini-top"><div class="job-mini-logo">TX</div><span class="job-mini-salary">$16K-20K</span></div>
           <b class="title">Analista de Datos</b>
           <div class="job-mini-meta"><span>Híbrido</span><span>·</span><span>Monterrey</span></div>
@@ -2917,7 +2849,7 @@
         <div class="brand"><div class="brand-mark"><img src="assets/img/logo-plane-white.png" alt=""></div><span class="brand-name">Aplicca</span></div>
         <div class="jobs-tabs">
           <span onclick="showScreen('empresa-perfil')"><i class="ti ti-building" aria-hidden="true"></i> Mi <span class="tab-cursive">Empresa</span></span>
-          <span onclick="showScreen('empresa-vacantes')"><i class="ti ti-briefcase" aria-hidden="true"></i> Mis vacantes</span>
+          <span onclick="showScreen('empresa-vacantes'); loadMyJobs()"><i class="ti ti-briefcase" aria-hidden="true"></i> Mis vacantes</span>
           <span class="active"><i class="ti ti-bell" aria-hidden="true"></i> Alertas</span>
         </div>
         <div class="account-menu-wrap">
@@ -3604,5 +3536,6 @@
   <script src="js/app.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
   <script src="js/supabase-client.js" defer></script>
+  <script src="js/data.js" defer></script>
 </body>
 </html>
