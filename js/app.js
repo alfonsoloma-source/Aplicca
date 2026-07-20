@@ -39,7 +39,7 @@
   }
 
   var SHARED_AUTH_SCREENS = [
-    'login', 'forgot', 'sent', 'register', 'verify', 'crearcv',
+    'login', 'forgot', 'sent', 'nueva-contrasena', 'register', 'verify', 'crearcv',
     'manual-personal', 'manual-educacion', 'manual-experiencia', 'manual-intereses', 'subircv'
   ];
 
@@ -448,7 +448,15 @@
     var dropzone = event.currentTarget;
 
     dropzone.classList.remove('dragover');
-    if (card) dropzone.appendChild(card);
+    if (card) {
+      dropzone.appendChild(card);
+      var newStage = dropzone.closest('.kanban-col') ? dropzone.closest('.kanban-col').dataset.stage : null;
+      // data.js (si está cargado) persiste este cambio en Supabase; si no está
+      // disponible, la tarjeta igual se mueve visualmente, solo no se guarda.
+      if (newStage && typeof window.onKanbanCardMoved === 'function') {
+        window.onKanbanCardMoved(card.dataset.applicationId, newStage);
+      }
+    }
     updateKanbanTotals();
   }
 
