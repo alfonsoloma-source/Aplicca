@@ -28,6 +28,10 @@
     ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
     : null;
 
+  // Expuesto para que js/data.js (Publicar/Buscar vacante, Kanban, etc.) use
+  // este mismo cliente en vez de crear uno nuevo por su cuenta.
+  window.supabaseClientRef = supabaseClient;
+
   // Recuerda qué correo y qué rol está a medio verificar, para la pantalla de código.
   var pendingVerifyEmail = '';
   var pendingVerifyRole = 'candidato';
